@@ -1,0 +1,5 @@
+- npm i ejs
+- npm i -D nodaemon
+- npm i -g gulp -> npx로 실행가능
+- npm init -y -> 초기설정 전부 설치
+- 
