@@ -1,15 +1,10 @@
 const mysql = require('mysql2');
+const dbconn = require('./dbconn');
 const util = require('util');
 
 module.exports = {
     findAll: async function(){
-        const conn = mysql.createConnection({
-            host: '127.0.0.1',
-            port: 3307,
-            user: 'webdb',
-            password: 'webdb',
-            database: 'webdb'
-        });
+        const conn = dbconn();
 
         // const query = function(sql, data){
         //     return new Promise(function(resolve, reject){
@@ -24,6 +19,18 @@ module.exports = {
         
         try {
             return await query('select no, first_name as firstName, last_name as lastName, email from emaillist order by no desc', []);
+        } catch(e) {
+            console.error(e);
+        } finally {
+            conn.end();
+        }
+    },
+    insert: async function(emaillist){
+        const conn = dbconn();
+        const query = util.promisify(conn.query).bind(conn);
+
+        try {
+            return await query('insert into emaillist(first_name, last_name, email) values(?, ?, ?)', Object.values(emaillist));
         } catch(e) {
             console.error(e);
         } finally {
