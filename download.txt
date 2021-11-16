@@ -3,4 +3,5 @@
 - npm i -g gulp -> npx로 실행가능
 - npm init -y -> 초기설정 전부 설치
 - npm i serve-static
-- 
+- npm i connect
+- npm i connect-route
