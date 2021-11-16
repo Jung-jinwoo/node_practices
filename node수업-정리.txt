@@ -136,9 +136,10 @@ package.json 실행 스크립트
 
 11. mysite: (models based on Sequelize) - ORM 기반
 
-1. orm(sequelize)
+1. orm(sequelize) -> JS Test
 2. user(session, Authentication, Access Controll), jQuery(ajax) + API server
 3. views -> include(ejs)
 4. dotenv(configuration: DB connection, port, static directory)
 5. log(winston)
 6. fileupload(multer)
+7. error 처리
