@@ -7,7 +7,8 @@ const dotenv = require('dotenv');
 dotenv.config({path: path.join(__dirname, 'config/app.env')});
 
 // 2. Application Routers
-const applicationRouter = require('../routes')
+const {applicationRouter} = require('./routes');
+const {SIGTERM} = require('constants');
 
 // 3. Logger
 

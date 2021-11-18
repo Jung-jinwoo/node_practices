@@ -1,12 +1,24 @@
-const mainRouter = require('./routes/main');
-const userRouter = require('./routes/user');
+const errorRoute = require('./error');
 
-// 4-4. request router
-.all('*', function(req, res, next){
-    res.locals.req = req;
-    res.locals.res = res;
-    next();
-});
+const applicationRouter = {
+    setup: function(application){
+       //const site =  models.Site.findeOne();
 
-//.use('/', mainRouter)
-//.use('/user', userRouter);
+        application
+            .all('*', function(req, res, next){
+                res.locals.req = req;
+                res.locals.res = res;
+                next();
+            })
+
+            .use('/', require('./main'))
+            .use('/user', require('./user'))
+
+            .use(errorRoute.error404)
+            .use(errorRoute.error505)
+
+            .siteTitle = 'MySite';
+    }
+}
+
+module.exports = {applicationRouter}
